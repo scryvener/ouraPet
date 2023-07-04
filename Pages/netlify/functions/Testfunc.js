@@ -2,7 +2,7 @@
 
 export const handler = async (event,data) => {
     
-    const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+    //const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
     //pull in api key
     //for testing is pulled from personal access, need to implement Oauth
