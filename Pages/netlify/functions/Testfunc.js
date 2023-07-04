@@ -5,7 +5,7 @@ export const handler = async (event,data) => {
     //const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
     //pull in api key
-    //for testing is pulled from personal access, need to implement Oauth
+    //for testing is pulled from personal access, need to implement Oauth, likely getting passed in by backend function call?
     const apiKey=process.env.OURA_PA_KEY
 
     async function apiCall(path){
@@ -32,7 +32,7 @@ export const handler = async (event,data) => {
     }
 
     //dates need to become variables
-    api_call_path='https://api.ouraring.com/v2/usercollection/daily_readiness'
+    api_call_path='https://api.ouraring.com/v2/usercollection/daily_readiness?start_date=2023-06-01&end_date=2023-06-05'
 
     var apiResponse= await apiCall(api_call_path)
 
