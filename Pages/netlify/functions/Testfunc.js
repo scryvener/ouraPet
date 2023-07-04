@@ -6,6 +6,7 @@ export const handler = async (event,data) => {
     //pull in api key
     //const apiKey=process.env.OpenAIKey
 
+    console.log("Hello there")
     
     return {
         statusCode: 200,
