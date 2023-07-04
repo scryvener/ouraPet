@@ -7,7 +7,7 @@ const {
 
 // Connect to our database 
 const { createClient } = require('@supabase/supabase-js');
-const supabase = createClient(DATABASE_URL, SUPABASE_SERVICE_API_KEY);
+const supabase = createClient(SUPA_DB_PATH, SUPA_DB_KEY);
 
 // Our standard serverless handler function
 exports.handler = async event => {
