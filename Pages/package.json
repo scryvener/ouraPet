@@ -1,6 +1,6 @@
 
 {
-    "name": "supabase-js",
+    "name": "@supabase/supabase-js",
     "version": "2.0.0",
     "author": "Supabase"
   }
