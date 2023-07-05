@@ -22,7 +22,7 @@ exports.handler = async event => {
              readiness: 60,
              sleep: 70, 
              activity: 100,
-             bonus: 0
+             bonus_track: 0
             },
         ]);
 
