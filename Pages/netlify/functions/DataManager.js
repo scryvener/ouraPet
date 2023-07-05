@@ -14,12 +14,23 @@ exports.handler = async event => {
 
   // Insert a row
     const { data, error } = await supabase
-        .from('Test')
+        .from('PetStatus')
         .insert([
-            { note: 'I need to not forget this' },
+            { user_id: 1,
+             pet_id: 1,
+             pet_lvl: 1,
+             readiness: 60,
+             sleep: 70, 
+             activity: 100,
+             bonus: 0
+            },
         ]);
 
+    
   // Did it work?
-  console.log(data, error);
+  return {
+    statusCode: 200,
+    body: JSON.stringify({message: [data,error]})
+    };
   
 }
