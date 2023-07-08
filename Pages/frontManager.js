@@ -4,7 +4,7 @@
 const frontQuery = async (data) =>{
 
     try {
-        const response = fetch('/.netlify/functions/DB_Query', {
+        const response = await fetch('/.netlify/functions/DB_Query', {
           method: 'POST',
           body: JSON.stringify(data),
           headers: { 'Content-Type': 'application/json' }
@@ -12,7 +12,7 @@ const frontQuery = async (data) =>{
         if (!response.ok) {
           throw new Error(response.statusText);
         }
-        const jsonData = response.json();
+        const jsonData = await response.json();
         return jsonData;
       } catch (error) {
         console.error(error);
