@@ -24,7 +24,7 @@ const frontQuery = async (data) =>{
 //pull data from the database and update gif source(eventually the animation/sprite loop) based off of stats.
 async function updateGifSource(){
 
-    target_user_id=1//will need to modify user_id based on who is logged in.
+    var target_user_id=1//will need to modify user_id based on who is logged in.
 
     let data={
         'user_id':target_user_id,
