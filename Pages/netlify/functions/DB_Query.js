@@ -15,8 +15,6 @@ exports.handler = async event => {
 
   let inputData=event.body
 
-  console.log(target_id)
-
   let target_id=inputData.user_id
 
   // Query
