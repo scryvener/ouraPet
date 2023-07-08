@@ -15,7 +15,7 @@ exports.handler = async event => {
 
   let inputData=event.body
 
-  let target_id=inputData.user_id
+  let target_id=int(inputData.user_id)
 
   // Query
     const { data, error } = await supabase
