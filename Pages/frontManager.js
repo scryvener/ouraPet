@@ -30,9 +30,11 @@ async function updateGifSource(){
         'user_id':target_user_id
     }
 
-    mostRecentStats= await frontQuery(data)
+    dbResponse= await frontQuery(data)
 
-    console.log(mostRecentStats)
+    mostRecentStats=dbResponse[0]
+
+    console.log(mostRecentStats.activity)
 
     document.getElementById('petGif').src="./Assets/lv3_normal.gif"
 
