@@ -13,7 +13,7 @@ const supabase = createClient(SUPA_DB_PATH, SUPA_DB_KEY);
 // Our standard serverless handler function
 exports.handler = async event => {
 
-  let inputData=JSON.parse(event.body)
+  let inputData=event.body
 
   let target_id=Number(inputData.user_id)
 
@@ -21,7 +21,7 @@ exports.handler = async event => {
     const { data, error } = await supabase
         .from('PetStatus')
         .select()//change this later
-        .eq('user_id',target_id)
+        .eq('user_id',1)
 
   
 
