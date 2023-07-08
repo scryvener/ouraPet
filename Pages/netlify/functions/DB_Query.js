@@ -15,6 +15,8 @@ exports.handler = async event => {
 
   let inputData=JSON.parse(event.body)
 
+  console.log(target_id)
+
   let target_id=inputData.user_id
 
   // Query
@@ -23,11 +25,12 @@ exports.handler = async event => {
         .select()
         .eq('user_id',target_id)
 
-    
+  console.log(data)
+
   // return data
   return {
     statusCode: 200,
-    body: data
+    body: JSON.stringify(data)
     };
   
 }
