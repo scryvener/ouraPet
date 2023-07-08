@@ -27,7 +27,8 @@ async function updateGifSource(){
     target_user_id=1//will need to modify user_id based on who is logged in.
 
     let data={
-        'user_id':target_user_id
+        'user_id':target_user_id,
+        'filler':1
     }
 
     dbResponse= await frontQuery(data)

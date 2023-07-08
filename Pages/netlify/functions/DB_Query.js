@@ -11,7 +11,7 @@ const { createClient } = require('@supabase/supabase-js');
 const supabase = createClient(SUPA_DB_PATH, SUPA_DB_KEY);
 
 // Our standard serverless handler function
-exports.handler = async event => {
+export const handler = async event => {
 
   let inputData=JSON.parse(event.body)
 
@@ -28,7 +28,7 @@ exports.handler = async event => {
   // return data
   return {
     statusCode: 200,
-    body: JSON.stringify(inputData)
+    body: JSON.stringify({inputData,data})
     };
   
 }
