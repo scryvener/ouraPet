@@ -35,8 +35,19 @@ async function updateGifSource(){
 
     var mostRecentStats=dbResponse[0]
 
-    console.log(mostRecentStats.activity)
+    let activityScore=mostRecentStats.activity
+    let sleepScore=mostRecentStats.sleep
+    let readinessScore=mostRecentStats.readiness
 
-    document.getElementById('petGif').src="./Assets/lv3_normal.gif"
+    let lvl=mostRecentStats.pet_lvl
+
+    if (activityScore<=30 || sleepScore<=30 || readinessScore<=30){
+        document.getElementById('petGif').src="./Assets/lv"+String(lvl)+"_sad.gif"
+    } else if (activityScore>=70 || sleepScore<70 || readinessScore<70){
+        document.getElementById('petGif').src="./Assets/lv"+String(lvl)+"_content.gif"}
+    else{
+        document.getElementById('petGif').src="./Assets/lv"+String(lvl)+"_normal.gif"
+        }
+
 
 }
