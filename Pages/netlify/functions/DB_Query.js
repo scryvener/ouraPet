@@ -21,14 +21,14 @@ exports.handler = async event => {
     const { data, error } = await supabase
         .from('PetStatus')
         .select()//change this later
-        .eq('user_id',1)
+        .eq('user_id',target_id)
 
   
 
   // return data
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: data,input:inputData,target:target_id})
+    body: data
     };
   
 }
