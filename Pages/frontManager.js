@@ -26,11 +26,11 @@ function frontQuery(user_id){
 
 
 //pull data from the database and update gif source(eventually the animation/sprite loop) based off of stats.
-function updateGifSource(){
+async function updateGifSource(){
 
     target_user_id=1//will need to modify user_id based on who is logged in.
 
-    mostRecentStats=frontQuery(target_user_id)
+    mostRecentStats= await frontQuery(target_user_id)
 
     console.log(mostRecentStats)
 
