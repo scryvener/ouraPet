@@ -13,7 +13,7 @@ const supabase = createClient(SUPA_DB_PATH, SUPA_DB_KEY);
 // Our standard serverless handler function
 exports.handler = async event => {
 
-  let inputData=JSON.parse(event.body)
+  let inputData=event.body
 
   console.log(target_id)
 
