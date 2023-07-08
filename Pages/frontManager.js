@@ -31,9 +31,9 @@ async function updateGifSource(){
         'filler':1
     }
 
-    dbResponse= await frontQuery(data)
+    const dbResponse= await frontQuery(data)
 
-    mostRecentStats=dbResponse[0]
+    var mostRecentStats=dbResponse[0]
 
     console.log(mostRecentStats.activity)
 
