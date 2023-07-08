@@ -51,3 +51,8 @@ async function updateGifSource(){
 
 
 }
+
+async function updateDB(){
+
+    
+}
