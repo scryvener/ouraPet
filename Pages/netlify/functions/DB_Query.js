@@ -20,7 +20,7 @@ exports.handler = async event => {
   // Query
     const { data, error } = await supabase
         .from('PetStatus')
-        .select("*")//change this later
+        .select()//change this later
         .eq('user_id',target_id)
 
   
@@ -28,7 +28,7 @@ exports.handler = async event => {
   // return data
   return {
     statusCode: 200,
-    body: JSON.stringify(data)
+    body: JSON.stringify(target_id)
     };
   
 }
