@@ -1,10 +1,10 @@
 
 //handles call to serverside function
 
-const frontQuery = async (data) =>{
+const frontQuery = async (path,data) =>{
 
     try {
-        const response = await fetch('/.netlify/functions/DB_Query', {
+        const response = await fetch(path, {
           method: 'POST',
           body: JSON.stringify(data),
           headers: { 'Content-Type': 'application/json' }
@@ -31,7 +31,7 @@ async function updateGifSource(){
         'filler':1
     }
 
-    const dbResponse= await frontQuery(data)
+    const dbResponse= await frontQuery('/.netlify/functions/DB_Query',data)
 
     var mostRecentStats=dbResponse[0]
 
@@ -54,5 +54,14 @@ async function updateGifSource(){
 
 async function updateDB(){
 
-    
+    //if date used, must be in YYYY-MM-DD format, ie 2023-06-01
+    let data={
+        'user_id':1,//filler for now, eventually should be passing the user's access token?
+        'start_date': null, //eventually need this? not sure, since should just be accessing the most recent data for the day
+        'end_date':null
+    }
+
+    const apiResponse=await frontQuery('/.netlify/functions/Oura_API_Call',data)
+    //DB insertion should be handled on the backend.
+
 }
