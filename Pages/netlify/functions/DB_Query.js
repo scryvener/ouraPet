@@ -23,12 +23,12 @@ exports.handler = async event => {
         .select()
         .eq('user_id',target_id)
 
-  console.log(data)
+  
 
   // return data
   return {
     statusCode: 200,
-    body: JSON.stringify(data)
+    body: JSON.stringify(target_id)
     };
   
 }
