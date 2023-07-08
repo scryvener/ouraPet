@@ -1,11 +1,7 @@
 
 //handles call to serverside function
 
-function frontQuery(user_id){
-
-    let data={
-        'user_id':user_id
-    }
+const frontQuery = async (data) =>{
 
     try {
         const response = fetch('/.netlify/functions/DB_Query', {
@@ -30,7 +26,11 @@ async function updateGifSource(){
 
     target_user_id=1//will need to modify user_id based on who is logged in.
 
-    mostRecentStats= await frontQuery(target_user_id)
+    let data={
+        'user_id':user_id
+    }
+
+    mostRecentStats= await frontQuery(data)
 
     console.log(mostRecentStats)
 
