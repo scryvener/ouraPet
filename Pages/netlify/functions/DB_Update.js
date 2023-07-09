@@ -54,7 +54,8 @@ exports.handler = async event => {
     updateStatus='DB Updated'
 
   } else{
-    updateStatus='No Update Performed, not enough time has passed '+String(timeDiff)
+    //updateStatus='No Update Performed, not enough time has passed '+String(timeDiff)
+    updateStatus=String(last_updated)+' '+String(timeNow)
   }
 
   
