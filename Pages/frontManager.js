@@ -20,7 +20,6 @@ const frontQuery = async (path,data) =>{
 
 }
 
-
 //pull data from the database and update gif source(eventually the animation/sprite loop) based off of stats.
 async function updateGifSource(){
 
@@ -41,18 +40,30 @@ async function updateGifSource(){
 
     let lvl=mostRecentStats.pet_lvl
 
+    //prob can be a function to do the updating so we aren't repeating so many lines.
     if (activityScore<=30 || sleepScore<=30 || readinessScore<=30){
         document.getElementById('petGif').src="./Assets/lv"+String(lvl)+"_sad.gif"
-    } else if (activityScore>=70 || sleepScore<70 || readinessScore<70){
-        document.getElementById('petGif').src="./Assets/lv"+String(lvl)+"_content.gif"}
+        document.getElementById('petStatus').innerHTML='Your pet is Sad!'
+
+    } else if (activityScore>=70 && sleepScore>70 && readinessScore>70){
+        document.getElementById('petGif').src="./Assets/lv"+String(lvl)+"_content.gif"
+        document.getElementById('petStatus').innerHTML='Your pet is Happy!'
+    }
     else{
         document.getElementById('petGif').src="./Assets/lv"+String(lvl)+"_normal.gif"
-        }
+        document.getElementById('petStatus').innerHTML='Your pet feels normal.'
+
+    }
 
 
 }
 
 async function updateDB(){
+
+    //rather than a timer, this could just be done on load/login?
+    //that way don't need something constantly running in the background
+    //also will need someway to lock the update, that way you can't keep refreshing to get more exp. can be a simple check the timestamp, subtract off current time, and proceed only if time delta is more than X amount
+    //if we are tracking history(upload new row everytime somebody updates), then would be pull all from this persons user id, sort by most recent date, then calculate time difference.
 
     //if date used, must be in YYYY-MM-DD format, ie 2023-06-01
     let data={

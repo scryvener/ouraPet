@@ -46,7 +46,7 @@ exports.handler = async event => {
         ]); */
 
     
-  // Did it work?
+  // probably don't need to send back the data
   return {
     statusCode: 200,
     body: JSON.stringify({message: [data,error]})
