@@ -33,7 +33,7 @@ exports.handler = async event => {
 
   const { check_data, check_error } = await supabase
         .from('PetStatus')
-        .select('created_at')//change this later, should not be doing full select
+        .select('created_at')
         .eq('user_id',user_id)
 
   let last_updated=Date.parse(check_data)
@@ -55,7 +55,7 @@ exports.handler = async event => {
 
   } else{
     //updateStatus='No Update Performed, not enough time has passed '+String(timeDiff)
-    updateStatus=String(last_updated)+' '+String(timeNow)
+    updateStatus=String(last_updated)+' '+String(timeNow)+' '+String(check_data)
   }
 
   
