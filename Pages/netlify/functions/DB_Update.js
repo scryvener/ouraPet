@@ -37,6 +37,7 @@ exports.handler = async event => {
   .from('PetStatus')
   .update({ created_at: timeNow, readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score) })
   .eq('user_id', user_id)
+  .select()
 
   updateStatus='DB Updated'
 
