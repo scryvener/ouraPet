@@ -60,7 +60,7 @@ async function updateGifSource(){
 
 async function updateDB(){
 
-    var id=2 //filler for now, eventually should be passing the user's access token?
+    var id=1 //filler for now, eventually should be passing the user's access token?
 
     //rather than a timer, this could just be done on load/login?
     //that way don't need something constantly running in the background
