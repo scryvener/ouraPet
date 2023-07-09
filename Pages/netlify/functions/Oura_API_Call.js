@@ -1,8 +1,6 @@
 
 
 export const handler = async (event,data) => {
-    
-    //const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
     //pull in api key
     //for testing is pulled from personal access, need to implement Oauth, likely getting passed in by backend function call?
@@ -51,19 +49,22 @@ export const handler = async (event,data) => {
         ]
     }
 
-    var apiResponse=[]
+    var apiResponse=[]//more for debug purposes/if we want more detailed calculation later
+    var scores=[]
     for (var i=0;i<3;i++){
         apiResponse[i]=await apiCall(call_paths[i])
+
+        let temp=JSON.parse(apiResponse[i])
+
+        scores[i]=temp.data[0].score
     }
 
-    //dates need to become variables
-    //api_call_path='https://api.ouraring.com/v2/usercollection/daily_readiness?start_date=2023-06-01&end_date=2023-06-05'
+    //process data and insert into supabase
 
-    //var apiResponse= await apiCall(api_call_path)
 
     return {
         statusCode: 200,
-        body: JSON.stringify(apiResponse)
+        body: JSON.stringify(scores)
     };
 
 }
