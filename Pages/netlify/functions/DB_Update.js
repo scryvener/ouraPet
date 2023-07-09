@@ -33,7 +33,7 @@ exports.handler = async event => {
 
   const { check_data, check_error } = await supabase
         .from('PetStatus')
-        .select('created_at')
+        .select('user_id','created_at')
         .eq('user_id',user_id)
 
   let last_updated=Date.parse(check_data)
