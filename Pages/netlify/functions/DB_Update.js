@@ -35,8 +35,8 @@ exports.handler = async event => {
   
   const { data, error } = await supabase
   .from('PetStatus')
-  .upsert({ readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score) })
-  .eq('user_id', user_id)
+  .update({ readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score) })
+  .eq('user_id', 2)
   .select()
 
   updateStatus='DB Updated'
@@ -59,7 +59,7 @@ exports.handler = async event => {
   // probably don't need to send back the data
   return {
     statusCode: 200,
-    body: JSON.stringify({message: inputData})
+    body: JSON.stringify({message: [data,error]})
     };
   
 }
