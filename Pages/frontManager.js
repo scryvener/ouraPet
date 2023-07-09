@@ -60,6 +60,8 @@ async function updateGifSource(){
 
 async function updateDB(){
 
+    var id=2 //filler for now, eventually should be passing the user's access token?
+
     //rather than a timer, this could just be done on load/login?
     //that way don't need something constantly running in the background
     //also will need someway to lock the update, that way you can't keep refreshing to get more exp. can be a simple check the timestamp, subtract off current time, and proceed only if time delta is more than X amount
@@ -67,7 +69,7 @@ async function updateDB(){
 
     //if date used, must be in YYYY-MM-DD format, ie 2023-06-01
     let data={
-        'user_id':1,//filler for now, eventually should be passing the user's access token?
+        'user_id':id,
         'start_date': null, //eventually need this? not sure, since should just be accessing the most recent data for the day
         'end_date':null
     }
@@ -75,7 +77,7 @@ async function updateDB(){
     const apiResponse=await frontQuery('/.netlify/functions/Oura_API_Call',data)
 
     let insertData={
-        'user_id':1,
+        'user_id':id,
         'readiness':apiResponse[0],
         'activity':apiResponse[1],
         'sleep':apiResponse[2],
