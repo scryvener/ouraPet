@@ -67,23 +67,45 @@ async function updateDB(){
     //also will need someway to lock the update, that way you can't keep refreshing to get more exp. can be a simple check the timestamp, subtract off current time, and proceed only if time delta is more than X amount
     //if we are tracking history(upload new row everytime somebody updates), then would be pull all from this persons user id, sort by most recent date, then calculate time difference.
 
-    //if date used, must be in YYYY-MM-DD format, ie 2023-06-01
-    let data={
-        'user_id':id,
-        'start_date': null, //eventually need this? not sure, since should just be accessing the most recent data for the day
-        'end_date':null
+
+    //we can actually run the time check here
+
+    let checkdata={
+        'user_id':target_user_id,
+        'filler':1
     }
 
-    const apiResponse=await frontQuery('/.netlify/functions/Oura_API_Call',data)
+    const dbResponse= await frontQuery('/.netlify/functions/DB_Query',checkdata)
 
-    let insertData={
-        'user_id':id,
-        'readiness':apiResponse[0],
-        'activity':apiResponse[1],
-        'sleep':apiResponse[2],
+    var mostRecentStats=dbResponse[0]
+
+    let last_updated=Date.parse(mostRecentStats.created_at)
+    let timeNow=Date.now()
+
+    let timeDiff=(timeNow-last_updated)/86400000
+
+    //only if there is more than a day of time diff do we call the api and update the db.
+    if (timeDiff>1) {
+        //if date used, must be in YYYY-MM-DD format, ie 2023-06-01
+        let data={
+            'user_id':id,
+            'start_date': null, //eventually need this? not sure, since should just be accessing the most recent data for the day
+            'end_date':null
+        }
+
+        const apiResponse=await frontQuery('/.netlify/functions/Oura_API_Call',data)
+
+        let insertData={
+            'user_id':id,
+            'readiness':apiResponse[0],
+            'activity':apiResponse[1],
+            'sleep':apiResponse[2],
+        }
+
+        const dbUpdate=await frontQuery('/.netlify/functions/DB_Update',insertData)
+
     }
 
-    const dbUpdate=await frontQuery('/.netlify/functions/DB_Update',insertData)
 
     //DB insertion should be handled on the backend.???
 

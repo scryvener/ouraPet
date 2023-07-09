@@ -27,39 +27,19 @@ exports.handler = async event => {
 
 
   //used to track if update went through
-  var updateStatus
-
-  //pull in the last updated for the user_id and check when it was last done. (prob need a more generic DB query function?)
-
-  const { check_data, check_error } = await supabase
-        .from('PetStatus')
-        .select()
-        .eq('user_id',user_id)
-
-  updateStatus=String(check_data)
-
-  //let last_updated=Date.parse(check_data)
-  //let timeNow=Date.now()
-
-  //let timeDiff=(timeNow-last_updated)/86400000
-  let timeDiff=0
-
+  
+  var timeNow=Date.now()
+  
   //change this to upsert
   //update only if more than one day has passed, need to update the created at column as well
-  if (timeDiff>1){
-    const { data, error } = await supabase
-    .from('PetStatus')
-    .update({ readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score) })
-    .eq('user_id', user_id)
-    .select()
-
-    updateStatus='DB Updated'
-
-  } else{
-    //updateStatus='No Update Performed, not enough time has passed '+String(timeDiff)
-  }
-
   
+  const { data, error } = await supabase
+  .from('PetStatus')
+  .update({ created_at: timeNow, readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score) })
+  .eq('user_id', user_id)
+  .select()
+
+  updateStatus='DB Updated'
 
   // Insert a row
     /* const { data, error } = await supabase
