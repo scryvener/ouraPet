@@ -36,14 +36,16 @@ exports.handler = async event => {
         .select()
         .eq('user_id',user_id)
 
-  //et last_updated=Date.parse(check_data)
+  updateStatus=String(check_data)
+
+  //let last_updated=Date.parse(check_data)
   //let timeNow=Date.now()
 
   //let timeDiff=(timeNow-last_updated)/86400000
   let timeDiff=0
 
   //change this to upsert
-  //update only if more than one day has passed
+  //update only if more than one day has passed, need to update the created at column as well
   if (timeDiff>1){
     const { data, error } = await supabase
     .from('PetStatus')
@@ -55,7 +57,6 @@ exports.handler = async event => {
 
   } else{
     //updateStatus='No Update Performed, not enough time has passed '+String(timeDiff)
-    updateStatus=String(check_data)
   }
 
   
