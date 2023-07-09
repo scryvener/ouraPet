@@ -60,28 +60,7 @@ export const handler = async (event,data) => {
 
     //arrange data, in the future also where we call the algo to see how much exp to update?
 
-    let insertData={
-        'user_id':user_id,
-        'readiness':scores[0],
-        'activity':scores[1],
-        'sleep':scores[2],
-    }
-
-    //feed score data into the supabase insertion function
-    try {
-        const response = await fetch('/.netlify/functions/DB_Update', {
-          method: 'POST',
-          body: JSON.stringify(insertData),
-          headers: { 'Content-Type': 'application/json' }
-        });
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        const jsonData = await response.json();
-        return jsonData;
-      } catch (error) {
-        console.error(error);
-      }
+    
 
 
     return {

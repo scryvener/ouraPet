@@ -62,6 +62,16 @@ async function updateDB(){
     }
 
     const apiResponse=await frontQuery('/.netlify/functions/Oura_API_Call',data)
-    //DB insertion should be handled on the backend.
+
+    let insertData={
+        'user_id':1,
+        'readiness':apiResponse[0],
+        'activity':apiResponse[1],
+        'sleep':apiResponse[2],
+    }
+
+    const dbUpdate=await frontQuery('/.netlify/functions/DB_Update',insertData)
+
+    //DB insertion should be handled on the backend.???
 
 }
