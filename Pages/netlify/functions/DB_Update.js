@@ -25,11 +25,37 @@ exports.handler = async event => {
 
   //we will do update for now
 
-  const { data, error } = await supabase
-  .from('PetStatus')
-  .update({ readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score) })
-  .eq('user_id', user_id)
-  .select()
+
+  //used to track if update went through
+  var updateStatus
+
+  //pull in the last updated for the user_id and check when it was last done. (prob need a more generic DB query function?)
+
+  const { check_data, check_error } = await supabase
+        .from('PetStatus')
+        .select('created_at')//change this later, should not be doing full select
+        .eq('user_id',target_id)
+
+  let last_updated=Date.parse(check_data)
+  let timeNow=Date.now()
+
+  let timeDiff=(timeNow-last_updated)/86400000
+
+  //update only if more than one day has passed
+  if (timeDiff>1){
+    const { data, error } = await supabase
+    .from('PetStatus')
+    .update({ readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score) })
+    .eq('user_id', user_id)
+    .select()
+
+    updateStatus='DB Updated'
+
+  } else{
+    updateStatus='No Update Performed, not enough time has passed'
+  }
+
+  
 
   // Insert a row
     /* const { data, error } = await supabase
@@ -49,7 +75,7 @@ exports.handler = async event => {
   // probably don't need to send back the data
   return {
     statusCode: 200,
-    body: JSON.stringify({message: [data,error]})
+    body: JSON.stringify({message: updateStatus})
     };
   
 }
