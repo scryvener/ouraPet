@@ -55,6 +55,9 @@ async function updateGifSource(){
 
     }
 
+    //remove this later, for trolling
+
+    document.getElementById('petRace').innerHTML='Winged Serpent'
 
 }
 
@@ -104,9 +107,7 @@ async function updateDB(){
 
         const dbUpdate=await frontQuery('/.netlify/functions/DB_Update',insertData)
 
-        //remove this later, for trolling
 
-        document.getElementById('petRace').innerHTML='Winged Serpent'
 
     }
 
