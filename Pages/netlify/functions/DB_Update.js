@@ -59,7 +59,7 @@ exports.handler = async event => {
   // probably don't need to send back the data
   return {
     statusCode: 200,
-    body: JSON.stringify({message: updateStatus})
+    body: JSON.stringify({message: data})
     };
   
 }
