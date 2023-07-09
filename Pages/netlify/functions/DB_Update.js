@@ -22,6 +22,8 @@ exports.handler = async event => {
   //will eventually have other data as well, like the exp update, how much for a lvl up, etc.
 
   //depending on if we want to keep history, either update or insert a new row(rows have timestampes, so technically can track)
+//feels like history is the right way to go, since stats over time would be nice. 
+
 
   //we will do update for now
 
@@ -30,9 +32,8 @@ exports.handler = async event => {
   
   var timeNow=new Date(Date.now())
   
-  //change this to upsert
-  //update only if more than one day has passed, need to update the created at column as well
-  
+  //change this to upsert?
+
   const { data, error } = await supabase
   .from('PetStatus')
   .update({ created_at:timeNow.toISOString(), readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score) })
