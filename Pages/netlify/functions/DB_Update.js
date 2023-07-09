@@ -35,7 +35,7 @@ exports.handler = async event => {
   
   const { data, error } = await supabase
   .from('PetStatus')
-  .update({ readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score) })
+  .update({ created_at:timeNow, readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score) })
   .eq('user_id', 2)
   .select()
 
