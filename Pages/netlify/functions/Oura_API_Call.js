@@ -58,7 +58,7 @@ export const handler = async (event,data) => {
     }
 
 
-    let temp=JSON.parse(apiResponse[0])
+    let temp=apiResponse[0]
 
     scores[i]=temp.data[0].score
 
