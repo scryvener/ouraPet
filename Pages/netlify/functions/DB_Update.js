@@ -41,6 +41,8 @@ exports.handler = async event => {
 
   let timeDiff=(timeNow-last_updated)/86400000
 
+
+  //change this to upsert
   //update only if more than one day has passed
   if (timeDiff>1){
     const { data, error } = await supabase
@@ -52,7 +54,7 @@ exports.handler = async event => {
     updateStatus='DB Updated'
 
   } else{
-    updateStatus='No Update Performed, not enough time has passed'
+    updateStatus='No Update Performed, not enough time has passed '+String(timeDiff)
   }
 
   
