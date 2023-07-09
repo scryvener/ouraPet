@@ -49,18 +49,14 @@ export const handler = async (event,data) => {
         ]
     }
 
-    var apiResponse=[]//more for debug purposes/if we want more detailed calculation later
+    var apiResponse=[]//storing for debug purposes/if we want more detailed calculation later
     var scores=[]
     for (var i=0;i<3;i++){
         apiResponse[i]=await apiCall(call_paths[i])
 
+        scores[i]=apiResponse[i].data[0].score
         
     }
-
-
-    let temp=apiResponse[0]
-
-    scores[i]=temp.data[0].score
 
     //process data and insert into supabase
 
