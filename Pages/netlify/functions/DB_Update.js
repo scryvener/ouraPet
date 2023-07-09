@@ -28,7 +28,7 @@ exports.handler = async event => {
 
   //used to track if update went through
   
-  var timeNow=Date.now()
+  var timeNow=Date(Date.now())
   
   //change this to upsert
   //update only if more than one day has passed, need to update the created at column as well
