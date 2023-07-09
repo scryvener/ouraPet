@@ -15,7 +15,7 @@ exports.handler = async event => {
   //bring in data
   var inputData=JSON.parse(event.body)
 
-  var user_id=inputData.user_id
+  var user_id=Number(inputData.user_id)
   var readiness_score=inputData.readiness
   var sleep_score=inputData.sleep
   var activity_score=inputData.activity
