@@ -28,15 +28,15 @@ exports.handler = async event => {
 
   //used to track if update went through
   
-  var timeNow=Date(Date.now())
+  var timeNow=new Date(Date.now())
   
   //change this to upsert
   //update only if more than one day has passed, need to update the created at column as well
   
   const { data, error } = await supabase
   .from('PetStatus')
-  .update({ created_at:timeNow, readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score) })
-  .eq('user_id', 2)
+  .update({ created_at:timeNow.toISOString(), readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score) })
+  .eq('user_id', user_id)
   .select()
 
   updateStatus='DB Updated'
