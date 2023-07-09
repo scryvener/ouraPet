@@ -20,7 +20,7 @@ exports.handler = async event => {
   // Query
     const { data, error } = await supabase
         .from('PetStatus')
-        .select()//change this later
+        .select()//change this later, should not be doing full select
         .eq('user_id',target_id)
 
   
