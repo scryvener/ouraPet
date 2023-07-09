@@ -34,7 +34,7 @@ exports.handler = async event => {
   const { check_data, check_error } = await supabase
         .from('PetStatus')
         .select('created_at')//change this later, should not be doing full select
-        .eq('user_id',target_id)
+        .eq('user_id',user_id)
 
   let last_updated=Date.parse(check_data)
   let timeNow=Date.now()
