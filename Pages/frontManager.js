@@ -71,7 +71,7 @@ async function updateDB(){
     //we can actually run the time check here
 
     let checkdata={
-        'user_id':target_user_id,
+        'user_id':id,
         'filler':1
     }
 
