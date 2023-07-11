@@ -135,7 +135,7 @@ html {
 
   background-position: -20vw center;
   background-repeat: no-repeat;
-  background-color: #a3a3ec;
+  background-color: #8d8dd6;
   
   @media (max-width: 600px) {
     background-position: center -20vw;
