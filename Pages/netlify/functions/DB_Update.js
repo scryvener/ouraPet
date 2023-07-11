@@ -19,6 +19,7 @@ exports.handler = async event => {
   var readiness_score=inputData.readiness
   var sleep_score=inputData.sleep
   var activity_score=inputData.activity
+  var lvl=inputData.lvl
   //will eventually have other data as well, like the exp update, how much for a lvl up, etc.
 
   //depending on if we want to keep history, either update or insert a new row(rows have timestampes, so technically can track)
@@ -36,7 +37,7 @@ exports.handler = async event => {
 
   const { data, error } = await supabase
   .from('PetStatus')
-  .update({ created_at:timeNow.toISOString(), readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score) })
+  .update({ created_at:timeNow.toISOString(), readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score), pet_lvl: Number(lvl)})
   .eq('user_id', user_id)
   .select()
 

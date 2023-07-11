@@ -66,6 +66,8 @@ async function updateDB(){
 
     var id=1 //filler for now, eventually should be passing the user's access token?
 
+    var lvl=document.getElementById('LvlDisplay').innerHTML=lvl //pull most recent lvl
+
     //rather than a timer, this could just be done on load/login?
     //that way don't need something constantly running in the background
     //also will need someway to lock the update, that way you can't keep refreshing to get more exp. can be a simple check the timestamp, subtract off current time, and proceed only if time delta is more than X amount
@@ -104,6 +106,7 @@ async function updateDB(){
             'readiness':apiResponse[0],
             'activity':apiResponse[1],
             'sleep':apiResponse[2],
+            'lvl':lvl
         }
 
         const dbUpdate=await frontQuery('/.netlify/functions/DB_Update',insertData)
