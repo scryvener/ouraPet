@@ -115,3 +115,8 @@ async function updateDB(){
     //DB insertion should be handled on the backend.???
 
 }
+
+//For debug, used to manually insert data into the db
+async function manualSubmit(){
+
+}
