@@ -55,9 +55,10 @@ async function updateGifSource(){
 
     }
 
-    //remove this later, for trolling
-
-    document.getElementById('petRace').innerHTML='Winged Serpent'
+    document.getElementById('LvlDisplay').innerHTML=lvl
+    document.getElementById('ActivityDisplay').innerHTML=activityScore
+    document.getElementById('SleepDisplay').innerHTML=sleepScore
+    document.getElementById('ReadinessDisplay').innerHTML=readinessScore
 
 }
 
@@ -118,5 +119,21 @@ async function updateDB(){
 
 //For debug, used to manually insert data into the db
 async function manualSubmit(){
+
+    //pull data from inputs
+    let lvl=document.getElementById('LvlInput').val()
+    let activity=document.getElementById('ActivityInput').val()
+    let sleep=document.getElementById('SleepInput').val()
+    let readiness=document.getElementById('ReadinessInput').val()
+
+    let data={
+        'user_id':1, //again, filler atm
+        'readiness':readiness,
+        'activity':activity,
+        'sleep':sleep,
+        'lvl':lvl
+    }
+
+    const dbUpdate=await frontQuery('/.netlify/functions/DB_Update',data)
 
 }

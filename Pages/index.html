@@ -14,18 +14,18 @@
     </div>
     
     <div class="dex">
-      <div class="heading"><div class="pokeball"></div><span>133</span><strong>OuraPet</strong></div>
-      <div class="info" id="LvlDisplay"><strong>Level:</strong> 3</div>
+      <div class="heading"><strong>OuraPet</strong></div>
+      <div class="info"><strong>Level:</strong><span id="LvlDisplay">1</span></div>
       <div class="info"><strong>Experience:</strong> 45230</div>
       <br />
-      <div class="info" id="ActivityDisplay"><strong>Activity Score:</strong></div>
-      <div class="info" id="SleepDisplay"><strong>Sleep Score:</strong> </div>
-      <div class="info" id="ReadinessDisplay"><strong>Readiness Score:</strong> </div>
+      <div class="info"><strong>Activity Score:</strong><span id="ActivityDisplay"></span></div>
+      <div class="info"><strong>Sleep Score:</strong><span id="SleepDisplay"></span></div>
+      <div class="info"><strong>Readiness Score:</strong><span id="ReadinessDisplay"></span> </div>
       <br />
-      <div class="info" id="petRace"><strong>Type:</strong> Lupo</div>
+      <div class="info" id="petRace"><strong>Type:</strong>Eldritch</div>
 
 
-      <div class="subheading">Pet Status</div>
+      <div class="subheading"><strong>Pet Status</strong></div>
       <p id="petStatus">You're pet feels Content</p>
 
 
@@ -50,13 +50,13 @@
       </div>
 
       <div class="subheading">
-        Manual input of params. Will manually submit to db, overriding the data from the API. Note no validation is done, integers only pls. Pet EXP, bonus tracking, not calculated atm, so not included.
+        Manual input of params. Will manually submit to db, overriding the data from the API. Note no validation is done, input integers only. Pet EXP and type not used atm so not included. Remember to hit the refresh Pet button after. Pet status changes if either any stat less than 30, or all stats more than 70.
       </div>
 
-      <div class="info">PetLvl <input type="text" size=3></input></div>
-      <div class="info">Activity <input type="text" size=3></input></div>
-      <div class="info">Sleep <input type="text" size=3></input></div>
-      <div class="info">Readiness <input type="text" size=3></input></div>
+      <div class="info">PetLvl <input id="LvlInput" type="text" size=3></input></div>
+      <div class="info">Activity <input id="ActivityInput" type="text" size=3></input></div>
+      <div class="info">Sleep <input id="SleepInput" type="text" size=3></input></div>
+      <div class="info">Readiness <input id="ReadinessInput" type="text" size=3></input></div>
 
       <div class="info"> 
         <button onclick="manualUpdate()">ManualSubmit </button>
