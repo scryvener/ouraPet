@@ -121,7 +121,7 @@ async function updateDB(){
 }
 
 //For debug, used to manually insert data into the db
-async function manualSubmit(){
+async function manualUpdate(){
 
     //pull data from inputs
     let lvl=document.getElementById('LvlInput').val()
