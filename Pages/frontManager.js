@@ -66,7 +66,7 @@ async function updateDB(){
 
     var id=1 //filler for now, eventually should be passing the user's access token?
 
-    var lvl=document.getElementById('LvlDisplay').innerHTML=lvl //pull most recent lvl
+    var lvl=document.getElementById('LvlDisplay').innerHTML //pull most recent lvl
 
     //rather than a timer, this could just be done on load/login?
     //that way don't need something constantly running in the background
