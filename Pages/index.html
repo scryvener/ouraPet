@@ -45,13 +45,19 @@
       </div>
 
       <div class="subheading">
-        Click to call the Oura API and update the DB
+        Click to call the Oura API and update the DB. 
         <button onclick="updateDB()">RefreshStats</button>
 
       </div>
 
       <div class="subheading">
-        Manual input of params. Will manually submit to db, overriding the data from the API. Note no validation is done, input integers only. Pet EXP and type not used atm so not included. Remember to hit the refresh Pet button after. Pet status changes if either any stat less than 30, or all stats more than 70.
+        Manual input of params.
+        Will manually submit to db, overriding the data from the API.
+        Note no validation is done, input integers only.
+        Pet EXP and type not used atm so not included.
+        Remember to hit the refresh Pet button after.
+        Pet status changes if either any stat less than 30, or all stats more than 70.
+        Also note the refreshStats button is on a time lock, so if you manually update, it won't work.
       </div>
 
       <div class="info">PetLvl <input id="LvlInput" type="text" size=3></input></div>
