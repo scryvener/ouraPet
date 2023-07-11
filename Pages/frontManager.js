@@ -124,10 +124,10 @@ async function updateDB(){
 async function manualUpdate(){
 
     //pull data from inputs
-    let lvl=document.getElementById('LvlInput').val()
-    let activity=document.getElementById('ActivityInput').val()
-    let sleep=document.getElementById('SleepInput').val()
-    let readiness=document.getElementById('ReadinessInput').val()
+    let lvl=$('#LvlInput').val()
+    let activity=$('#ActivityInput').val()
+    let sleep=$('#SleepInput').val()
+    let readiness=$('#ReadinessInput').val()
 
     let data={
         'user_id':1, //again, filler atm
