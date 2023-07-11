@@ -60,6 +60,46 @@ async function updateGifSource(){
     document.getElementById('SleepDisplay').innerHTML=sleepScore
     document.getElementById('ReadinessDisplay').innerHTML=readinessScore
 
+
+    //This is for trolling, get rid of it later. Should be in db as lookup
+    let petsrc=document.getElementById('petGif').src
+
+    if (lvl==1){
+        if (petsrc.includes("sad")){
+            document.getElementById("petType").innerHTML="Miko"
+        }
+        if (petsrc.includes("content")){
+            document.getElementById("petType").innerHTML="Bear"
+        }
+        if (petsrc.includes("normal")){
+            document.getElementById("petType").innerHTML="Wolf"
+        }
+    }
+    if (lvl==2){
+        if (petsrc.includes("sad")){
+            document.getElementById("petType").innerHTML="Ice Cube"
+        }
+        if (petsrc.includes("content")){
+            document.getElementById("petType").innerHTML="Fox"
+        }
+        if (petsrc.includes("normal")){
+            document.getElementById("petType").innerHTML="Cat"
+        }
+    }
+    if (lvl==3){
+        if (petsrc.includes("sad")){
+            document.getElementById("petType").innerHTML="Ship"
+        }
+        if (petsrc.includes("content")){
+            document.getElementById("petType").innerHTML="Smug"
+        }
+        if (petsrc.includes("normal")){
+            document.getElementById("petType").innerHTML="Trashblazer"
+        }
+    }
+
+
+
 }
 
 async function updateDB(){
