@@ -18,10 +18,13 @@ exports.handler = async event => {
   let target_id=Number(inputData.user_id)
 
   // Query
+  //pull based on user _id, then select the most recent entry for that user. 
     const { data, error } = await supabase
         .from('PetStatus')
         .select()//change this later, should not be doing full select
         .eq('user_id',target_id)
+        .order('created_at',{ascending:false})
+        .limit(1)
 
   
 
