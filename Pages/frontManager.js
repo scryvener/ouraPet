@@ -196,7 +196,7 @@ async function temp(){
         'lvl':2
     }
     
-    const db=frontQuery('/.netlify/functions/DB_Test',testData)
+    const db=await frontQuery('/.netlify/functions/DB_Test',testData)
 
 }
 
