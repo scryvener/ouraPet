@@ -187,12 +187,17 @@ async function manualUpdate(){
 //call DBTest on load
 
 
-let testData={
-    'user_id':3, //again, filler atm
-    'readiness':50,
-    'activity':50,
-    'sleep':50,
-    'lvl':2
+async function temp(){
+    let testData={
+        'user_id':3, //again, filler atm
+        'readiness':50,
+        'activity':50,
+        'sleep':50,
+        'lvl':2
+    }
+    
+    const db=frontQuery('/.netlify/functions/DB_Test',testData)
+
 }
 
-const dbUpdate=await frontQuery('/.netlify/functions/DB_Test',testData)
+temp()
