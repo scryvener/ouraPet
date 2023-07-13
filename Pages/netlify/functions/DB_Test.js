@@ -23,7 +23,7 @@ exports.handler = async event => {
 
   // Query
   //pull based on user _id, then select the most recent entry for that user. 
-  const { d1, e1 } = await supabase
+  const { data1, e1 } = await supabase
       .from('PetStatus')
       .select()//change this later, should not be doing full select
       .eq('user_id',user_id)
@@ -32,15 +32,15 @@ exports.handler = async event => {
 
 
 
-  const { d2, e2 } = await supabase
+  /* const { d2, e2 } = await supabase
   .from('PetStatus')
   .insert({user_id: user_id,readiness: readiness_score, sleep: sleep_score, activity: activity_score, pet_lvl: lvl,exp:d1.exp+5})
-  .select()
+  .select() */
 
   // return data
   return {
     statusCode: 200,
-    body: JSON.stringify([d1,d2])
+    body: JSON.stringify(data1)
     };
   
 }
