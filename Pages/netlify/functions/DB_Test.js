@@ -23,7 +23,7 @@ exports.handler = async event => {
 
   // Query
   //pull based on user _id, then select the most recent entry for that user. 
-  const { data1, e1 } = await supabase
+  const { data, e1 } = await supabase
       .from('PetStatus')
       .select()//change this later, should not be doing full select
       .eq('user_id',user_id)
@@ -40,7 +40,7 @@ exports.handler = async event => {
   // return data
   return {
     statusCode: 200,
-    body: JSON.stringify(data1)
+    body: JSON.stringify(data)
     };
   
 }
