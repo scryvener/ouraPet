@@ -30,11 +30,11 @@ exports.handler = async event => {
       .order('created_at',{ascending:false})
       .limit(1)
 
-
+  let responseData=JSON.parse(data)
 
   const { d2, e2 } = await supabase
   .from('PetStatus')
-  .insert({user_id: user_id,readiness: readiness_score, sleep: sleep_score, activity: activity_score, pet_lvl: lvl,exp:data.exp+5})
+  .insert({user_id: user_id,readiness: readiness_score, sleep: sleep_score, activity: activity_score, pet_lvl: lvl,exp:responseData.exp+5})
   .select()
 
   // return data
