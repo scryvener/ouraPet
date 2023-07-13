@@ -34,7 +34,7 @@ exports.handler = async event => {
 
   const { d2, e2 } = await supabase
   .from('PetStatus')
-  .insert({user_id: user_id,readiness: readiness_score, sleep: sleep_score, activity: activity_score, pet_lvl: lvl,exp:d2.exp+5})
+  .insert({user_id: user_id,readiness: readiness_score, sleep: sleep_score, activity: activity_score, pet_lvl: lvl,exp:d1.exp+5})
   .select()
 
   // return data
