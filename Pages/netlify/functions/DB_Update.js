@@ -13,13 +13,14 @@ const supabase = createClient(SUPA_DB_PATH, SUPA_DB_KEY);
 exports.handler = async event => {
 
   //bring in data
+  //will have to adjust once we start taking into account exp and pet ID/types
   var inputData=JSON.parse(event.body)
 
   var user_id=Number(inputData.user_id)
-  var readiness_score=inputData.readiness
-  var sleep_score=inputData.sleep
-  var activity_score=inputData.activity
-  var lvl=inputData.lvl
+  var readiness_score=Number(inputData.readiness)
+  var sleep_score=Number(inputData.sleep)
+  var activity_score=Number(inputData.activity)
+  var lvl=Number(inputData.lvl)
   //will eventually have other data as well, like the exp update, how much for a lvl up, etc.
 
   //depending on if we want to keep history, either update or insert a new row(rows have timestampes, so technically can track)
@@ -33,12 +34,9 @@ exports.handler = async event => {
   
   var timeNow=new Date(Date.now())
   
-  //change this to upsert?
-
   const { data, error } = await supabase
   .from('PetStatus')
-  .update({ created_at:timeNow.toISOString(), readiness: Number(readiness_score), sleep: Number(sleep_score), activity: Number(activity_score), pet_lvl: Number(lvl)})
-  .eq('user_id', user_id)
+  .insert({user_id: user_id,readiness: readiness_score, sleep: sleep_score, activity: activity_score, pet_lvl: lvl})
   .select()
 
   updateStatus='DB Updated'
