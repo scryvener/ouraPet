@@ -32,15 +32,15 @@ exports.handler = async event => {
 
 
 
-  /* const { d2, e2 } = await supabase
+  const { d2, e2 } = await supabase
   .from('PetStatus')
-  .insert({user_id: user_id,readiness: readiness_score, sleep: sleep_score, activity: activity_score, pet_lvl: lvl,exp:d1.exp+5})
-  .select() */
+  .insert({user_id: user_id,readiness: readiness_score, sleep: sleep_score, activity: activity_score, pet_lvl: lvl,exp:data.exp+5})
+  .select()
 
   // return data
   return {
     statusCode: 200,
-    body: JSON.stringify(data)
+    body: JSON.stringify(d2)
     };
   
 }
