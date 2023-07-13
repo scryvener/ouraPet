@@ -32,7 +32,7 @@ exports.handler = async event => {
 
   //used to track if update went through
   
-  var timeNow=new Date(Date.now())
+  //don't need to pass back data, remove the select/return message later.
   
   const { data, error } = await supabase
   .from('PetStatus')
