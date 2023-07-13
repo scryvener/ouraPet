@@ -108,6 +108,8 @@ async function updateDB(){
 
     var lvl=document.getElementById('LvlDisplay').innerHTML //pull most recent lvl
 
+    //for debug, is set to ignore the timeDif for now
+
     //rather than a timer, this could just be done on load/login?
     //that way don't need something constantly running in the background
     //also will need someway to lock the update, that way you can't keep refreshing to get more exp. can be a simple check the timestamp, subtract off current time, and proceed only if time delta is more than X amount
@@ -131,7 +133,7 @@ async function updateDB(){
     let timeDiff=(timeNow-last_updated)/86400000
 
     //only if there is more than a day of time diff do we call the api and update the db.
-    if (timeDiff>1) {
+    if (timeDiff>0) {//change back to 1 later
         //if date used, must be in YYYY-MM-DD format, ie 2023-06-01
         let data={
             'user_id':id,
