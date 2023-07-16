@@ -9,7 +9,7 @@ petImage.src = './Assets/Flowers_White_64x64_ForJS.png'
 const spriteDim=64 //sprites assumed to be square
 
 let animFrame=0;
-const staggerFrames=10
+var staggerFrames=10
 
 let frameX= 0
 let frameY= 0//not used for now, but for when there are different pet animations to scroll through
@@ -27,5 +27,10 @@ function animate(){
     requestAnimationFrame(animate)
 
 }
+
+function updateStagger(){
+    staggerFrames=Math.floor(Math.random()*20)
+}
+
 
 animate()
